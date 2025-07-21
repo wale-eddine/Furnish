@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FURNISH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Playfair Display", serif;
+            background-color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1.2s ease-out;
+        }
+        
+        .splash-text {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #3a6ea5;
+            letter-spacing: 10px;
+            transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1s ease-out;
+        }
+        
+        .zoom-out {
+            opacity: 0;
+        }
+        
+        .zoom-out .splash-text {
+            transform: scale(3);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="splash" id="splash">
+        <h1 class="splash-text">FURNISH</h1>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const splash = document.getElementById('splash');
+            
+            function redirectToMain() {
+                window.location.href = '../index.html';
+            }
+            
+            splash.addEventListener('click', function() {
+                splash.classList.add('zoom-out');
+                setTimeout(redirectToMain, 1200);
+            });
+            
+            splash.addEventListener('touchstart', function() {
+                splash.classList.add('zoom-out');
+                setTimeout(redirectToMain, 1200);
+            });
+        });
+    </script>
+</body>
+</html>

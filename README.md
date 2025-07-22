@@ -36,18 +36,39 @@ Furnish is a responsive furniture showcase website designed to display furniture
 
 ```
 Furnish/
-├── css/                    # Stylesheets directory
-│   ├── style.css          # Main stylesheet
-│   ├── responsive.css     # Responsive design rules
-│   └── animations.css     # CSS animations and transitions
+├── css/                   # Stylesheets directory
+│   └── style.css     
 ├── html/                  # Additional HTML pages
-│   ├── gallery.html       # Furniture gallery page
-│   ├── about.html         # About page
-│   └── contact.html       # Contact page
+│   ├── formulaire.html    
+│   ├── details.html       
+│   └── zoom_entry.html    
 ├── media/                 # Media assets directory
-│   ├── images/            # Furniture images
-│   ├── icons/             # UI icons and graphics
-│   └── backgrounds/       # Background images
+│   ├── Furnish _icon.jpg
+│   ├── Furnish-_icon.ico
+│   ├── accent-armchair.png
+│   ├── accent-chair.png
+│   ├── applepay.png
+│   ├── armchair.png
+│   ├── bar-stool.png
+│   ├── coffee-table.png
+│   ├── dining-chair-2.png
+│   ├── dining-chair.png
+│   ├── dining-room-icon.png
+│   ├── dining-room.png
+│   ├── hero-chair.png
+│   ├── living-room-icon.png
+│   ├── living-room.png
+│   ├── lounge-chair.png
+│   ├── mastercard.png
+│   ├── modern-dining-chair.png
+│   ├── modern-sofa.png
+│   ├── paypal.png
+│   ├── recliner-chair.png
+│   ├── side-chair.png
+│   ├── side-table.png
+│   ├── sofa.png
+│   ├── table.png                    
+│   └── visa.png       
 ├── screenshots/           # README screenshots
 │   └── homepage-desktop.jpg
 ├── index.html            # Main homepage

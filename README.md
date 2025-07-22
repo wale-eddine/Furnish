@@ -4,14 +4,13 @@ A modern furniture website built with HTML and CSS, showcasing elegant furniture
 
 ## 📋 Table of Contents
 
-- [About](#about)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+- [About](#-about)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Usage](#-usage)
+- [Technologies Used](#️-technologies-used)
+- [License](#-license)
 
 ## 🏠 About
 

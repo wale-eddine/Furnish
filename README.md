@@ -43,34 +43,7 @@ Furnish/
 │   ├── details.html       
 │   └── zoom_entry.html    
 ├── media/                 # Media assets directory
-│   ├── Furnish _icon.jpg
-│   ├── Furnish-_icon.ico
-│   ├── accent-armchair.png
-│   ├── accent-chair.png
-│   ├── applepay.png
-│   ├── armchair.png
-│   ├── bar-stool.png
-│   ├── coffee-table.png
-│   ├── dining-chair-2.png
-│   ├── dining-chair.png
-│   ├── dining-room-icon.png
-│   ├── dining-room.png
-│   ├── hero-chair.png
-│   ├── living-room-icon.png
-│   ├── living-room.png
-│   ├── lounge-chair.png
-│   ├── mastercard.png
-│   ├── modern-dining-chair.png
-│   ├── modern-sofa.png
-│   ├── paypal.png
-│   ├── recliner-chair.png
-│   ├── side-chair.png
-│   ├── side-table.png
-│   ├── sofa.png
-│   ├── table.png                    
-│   └── visa.png       
 ├── screenshots/           # README screenshots
-│   └── homepage-desktop.jpg
 ├── index.html            # Main homepage
 ├── LICENSE               # MIT License
 └── README.md            # Project documentation

@@ -5,7 +5,7 @@ A modern furniture website built with HTML and CSS, showcasing elegant furniture
 ## 🖼️ Preview
 
 ### 🖥️ Desktop View
-![Furnish Homepage Desktop](screenshots/homepage-desktop.jpg)
+![Furnish Homepage Desktop](screenshots/homepage.jpg)
 *Modern and elegant furniture showcase homepage*
 
 ## 📋 Table of Contents

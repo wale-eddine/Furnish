@@ -147,6 +147,3 @@ If you have any questions or need help with understanding this small project, pl
 ---
 
 *Last updated: January 2025*
-```
-
-

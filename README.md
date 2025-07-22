@@ -2,10 +2,17 @@
 
 A modern furniture website built with HTML and CSS, showcasing elegant furniture designs and collections.
 
+## 🖼️ Preview
+
+### 🖥️ Desktop View
+![Furnish Homepage Desktop](screenshots/homepage-desktop.jpg)
+*Modern and elegant furniture showcase homepage*
+
 ## 📋 Table of Contents
 
 - [About](#-about)
 - [Features](#-features)
+- [Preview](#️-preview)
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
 - [Usage](#-usage)
@@ -14,28 +21,38 @@ A modern furniture website built with HTML and CSS, showcasing elegant furniture
 
 ## 🏠 About
 
-Furnish is a responsive furniture showcase website designed to display furniture collections in an elegant and user-friendly interface. The project demonstrates modern web design principles using pure HTML and CSS.
+Furnish is a responsive furniture showcase website designed to display furniture collections in an elegant and user-friendly interface. The project demonstrates modern web design principles using pure HTML and CSS, featuring smooth animations, responsive layouts, and an intuitive user experience.
 
 ## ✨ Features
 
-- 📱 Responsive design that works on all devices
-- 🎨 Modern and clean user interface
-- 🖼️ Image gallery for furniture showcase
-- 🎯 Smooth navigation and user experience
-- 🎨 Custom CSS styling and animations
+- 📱 **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile
+- 🎨 **Modern Design** - Clean, elegant interface with smooth animations
+- 🖼️ **Image Gallery** - Comprehensive showcase of furniture collections
+- 🎯 **Smooth Navigation** - Intuitive user experience with easy browsing
+- ⚡ **Fast Loading** - Optimized performance with pure HTML/CSS
+- 🎨 **Custom Styling** - Unique design elements and hover effects
 
 ## 📁 Project Structure
 
 ```
 Furnish/
-├── css/                 # Stylesheets directory
-│   └── ...             # CSS files for styling
-├── html/               # HTML pages directory
-│   └── ...             # Additional HTML pages
-├── media/              # Media assets directory
-│   └── ...             # Images, videos, and other media files
-├── index.html          # Main homepage
-└── README.md           # Project documentation
+├── css/                    # Stylesheets directory
+│   ├── style.css          # Main stylesheet
+│   ├── responsive.css     # Responsive design rules
+│   └── animations.css     # CSS animations and transitions
+├── html/                  # Additional HTML pages
+│   ├── gallery.html       # Furniture gallery page
+│   ├── about.html         # About page
+│   └── contact.html       # Contact page
+├── media/                 # Media assets directory
+│   ├── images/            # Furniture images
+│   ├── icons/             # UI icons and graphics
+│   └── backgrounds/       # Background images
+├── screenshots/           # README screenshots
+│   └── homepage-desktop.jpg
+├── index.html            # Main homepage
+├── LICENSE               # MIT License
+└── README.md            # Project documentation
 ```
 
 ## 🚀 Getting Started
@@ -97,32 +114,54 @@ Then open `http://localhost:8000` in your browser.
 
 To customize the website:
 
-1. **Colors**: Modify the CSS variables in the main stylesheet
-2. **Fonts**: Update font families in the CSS files
-3. **Images**: Replace images in the `media/` directory
-4. **Content**: Edit HTML files to update text and structure
-5. **Layout**: Modify CSS grid and flexbox properties for different layouts
+### Colors and Themes
+```css
+/* Modify CSS variables in your main stylesheet */
+:root {
+  --primary-color: #your-color;
+  --secondary-color: #your-color;
+  --accent-color: #your-color;
+}
+```
+
+### Adding New Furniture Items
+1. Add images to `media/images/`
+2. Update HTML structure in relevant pages
+3. Adjust CSS grid layouts if needed
+
+### Responsive Breakpoints
+```css
+/* Mobile */
+@media (max-width: 768px) { }
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) { }
+
+/* Desktop */
+@media (min-width: 1025px) { }
+```
 
 ## 📱 Browser Support
 
-- ✅ Chrome (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Edge (latest)
-- ✅ Mobile browsers
+- ✅ **Chrome** (latest)
+- ✅ **Firefox** (latest)
+- ✅ **Safari** (latest)
+- ✅ **Edge** (latest)
+- ✅ **Mobile browsers** (iOS Safari, Chrome Mobile)
 
 
 ### Development Guidelines
 
-- Follow semantic HTML structure
-- Use consistent CSS naming conventions
-- Ensure responsive design principles
-- Test across different browsers
-- Optimize images for web performance
+- 📝 Follow semantic HTML5 structure
+- 🎨 Use consistent CSS naming conventions (BEM methodology preferred)
+- 📱 Ensure responsive design across all devices
+- 🧪 Test across different browsers and screen sizes
+- ⚡ Optimize images and assets for web performance
+- 📚 Document any new features or changes
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
 
@@ -136,7 +175,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-⭐ If you found this project helpful, please give it a star on GitHub!
+⭐ **If you found this project helpful, please give it a star on GitHub!**
 
 ## 📞 Support
 

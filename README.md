@@ -174,4 +174,5 @@ If you have any questions or need help with understanding this small project, pl
 ---
 
 *Built with ❤️ by Wale Eddine*
+
 *Last updated: 22 July 2025*

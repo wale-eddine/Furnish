@@ -162,11 +162,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **wale-eddine**
 - GitHub: [@wale-eddine](https://github.com/wale-eddine)
 
-## 🙏 Acknowledgments
-
-- Inspiration from modern furniture design trends
-- Community feedback and suggestions
-
 ---
 
 ⭐ **If you found this project helpful, please give it a star on GitHub!**
@@ -174,9 +169,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 If you have any questions or need help with understanding this small project, please:
-- Open an issue on GitHub
 - Contact the maintainer
 
 ---
 
+*Built with ❤️ by Wale Eddine*
 *Last updated: 22 July 2025*

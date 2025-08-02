@@ -44,9 +44,9 @@ Furnish/
 │   └── zoom_entry.html    
 ├── media/                 # Media assets directory
 ├── screenshots/           # README screenshots
-├── index.html            # Main homepage
-├── LICENSE               # MIT License
-└── README.md            # Project documentation
+├── index.html             # Main homepage
+├── LICENSE                # MIT License
+└── README.md              # Project documentation
 ```
 
 ## 🚀 Getting Started

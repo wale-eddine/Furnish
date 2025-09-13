@@ -38,9 +38,7 @@ Furnish is a responsive furniture showcase website designed to display furniture
 Furnish/
 ├── css/                   # Stylesheets directory
 │   └── style.css     
-├── html/                  # Additional HTML pages
-│   ├── formulaire.html    
-│   ├── details.html       
+├── html/                  # Additional HTML pages      
 │   └── zoom_entry.html    
 ├── media/                 # Media assets directory
 ├── screenshots/           # README screenshots

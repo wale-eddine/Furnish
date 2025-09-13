@@ -8,703 +8,784 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Added splash screen styles -->
+    <style>
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 1.2s ease-out;
+            cursor: pointer;
+        }
+        
+        .splash-text {
+            font-family: "Playfair Display", serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: #3a6ea5;
+            letter-spacing: 10px;
+            transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1s ease-out;
+        }
+        
+        .splash.zoom-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .splash.zoom-out .splash-text {
+            transform: scale(3);
+            opacity: 0;
+        }
+
+        /* Hide main content initially */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .main-content.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .splash-text {
+                font-size: 3rem;
+                letter-spacing: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <div class="logo-text">FURNISH</div>
-        </div>
-        <nav>
-            <ul class="main-nav">
-                <li><a href="#">Shop</a></li>
-                <li class="dropdown">
-                    <a href="#cat" >Categories</a>
-                    <div class="dropdown-menu">
-                        <a href="#">All Products</a>
-                        <a href="#">New Arrivals</a>
-                        <a href="#">Best Sellers</a>
-                        <a href="#">Sale</a>
+    <!-- Added splash screen overlay -->
+    <div class="splash" id="splash">
+        <h1 class="splash-text">FURNISH</h1>
+    </div>
+
+    <!-- Wrapped existing content in main-content div -->
+    <div class="main-content" id="mainContent">
+        <header>
+            <div class="logo">
+                <div class="logo-text">FURNISH</div>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#cat" >Categories</a>
+                        <div class="dropdown-menu">
+                            <a href="#">All Products</a>
+                            <a href="#">New Arrivals</a>
+                            <a href="#">Best Sellers</a>
+                            <a href="#">Sale</a>
+                        </div>
+                    </li>
+                    <li><a href="#">Vendors</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <div class="account-dropdown">
+                    <a href="#" class="icon account">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                    <div class="account-dropdown-content">
+                        <a href="html/signin.html">Sign In</a>
                     </div>
-                </li>
-                <li><a href="#">Vendors</a></li>
-                <li><a href="#">News</a></li>
-            </ul>
-        </nav>
-        <div class="nav-icons">
-            <div class="account-dropdown">
-                <a href="#" class="icon account">
+                </div>
+                <a href="#" class="icon search">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </a>
-                <div class="account-dropdown-content">
-                    <a href="#">Sign In</a>
-                </div>
-            </div>
-            <a href="#" class="icon search">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </a>
-            <a href="#" class="icon cart">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                <span class="cart-count">0</span>
-            </a>
-        </div>
-        <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">
-        <label for="mobile-menu-toggle" class="mobile-menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-    </header>
-    
-    <div class="breadcrumb">
-        <a href="#">HOME</a>
-    </div>
-    
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Spring<br>Collection</h1>
-            <p class="hero-subtitle">Refresh your space with our latest designs</p>
-            <a href="#" class="btn primary-btn">Shop now</a>
-        </div>
-        <div class="hero-slider">
-            <div class="hero-slides">
-                <div class="hero-slide active" id="slide1">
-                    <div class="hero-image">
-                        <img src="media/hero-chair.png" alt="Modern Chair" class="chair-img">
-                    </div>
-                </div>
-                <div class="hero-slide" id="slide2">
-                    <div class="hero-image">
-                        <img src="media/accent-chair.png" alt="Accent Chair" class="chair-img">
-                    </div>
-                </div>
-                <div class="hero-slide" id="slide3">
-                    <div class="hero-image">
-                        <img src="media/lounge-chair.png" alt="Lounge Chair" class="chair-img">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="slider-arrows">
-                <button class="arrow prev">
+                <a href="#" class="icon cart">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="15 18 9 12 15 6"></polyline>
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
-                </button>
-                <button class="arrow next">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
+                    <span class="cart-count">0</span>
+                </a>
             </div>
-            
-            <div class="slider-nav">
-                <button class="dot active" data-slide="0"></button>
-                <button class="dot" data-slide="1"></button>
-                <button class="dot" data-slide="2"></button>
-            </div>
-            <div class="slide-number">1</div>
-        </div>
-    </section>
-    
-    <section class="categories" id="cat">
-        <div class="categories-header">
-            <h2>Shop by<br>categories</h2>
-            <p>CURATED COLLECTIONS</p>
+            <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">
+            <label for="mobile-menu-toggle" class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </header>
+        
+        <div class="breadcrumb">
+            <a href="#">HOME</a>
         </div>
         
-        <div class="category-grid">
-            <div class="category-item">
-                <div class="category-image">
-                    <img src="media/dining-chair.png" alt="Dining Chair" class="furniture-img">
-                </div>
-                <p>Simple</p>
-                <a href="#" class="category-link">View Collection</a>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Spring<br>Collection</h1>
+                <p class="hero-subtitle">Refresh your space with our latest designs</p>
+                <a href="#" class="btn primary-btn">Shop now</a>
             </div>
-            
-            <div class="category-item">
-                <div class="category-image">
-                    <img src="media/sofa.png" alt="Sofa" class="furniture-img">
+            <div class="hero-slider">
+                <div class="hero-slides">
+                    <div class="hero-slide active" id="slide1">
+                        <div class="hero-image">
+                            <img src="media/hero-chair.png" alt="Modern Chair" class="chair-img">
+                        </div>
+                    </div>
+                    <div class="hero-slide" id="slide2">
+                        <div class="hero-image">
+                            <img src="media/accent-chair.png" alt="Accent Chair" class="chair-img">
+                        </div>
+                    </div>
+                    <div class="hero-slide" id="slide3">
+                        <div class="hero-image">
+                            <img src="media/lounge-chair.png" alt="Lounge Chair" class="chair-img">
+                        </div>
+                    </div>
                 </div>
-                <p>Modern</p>
-                <a href="#" class="category-link">View Collection</a>
-            </div>
-            
-            <div class="category-item">
-                <div class="category-image">
-                    <img src="media/table.png" alt="Table" class="furniture-img">
+                
+                <div class="slider-arrows">
+                    <button class="arrow prev">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="arrow next">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
-                <p>Classy</p>
-                <a href="#" class="category-link">View Collection</a>
+                
+                <div class="slider-nav">
+                    <button class="dot active" data-slide="0"></button>
+                    <button class="dot" data-slide="1"></button>
+                    <button class="dot" data-slide="2"></button>
+                </div>
+                <div class="slide-number">1</div>
             </div>
-        </div>
+        </section>
         
-        <div class="room-categories">
+        <section class="categories" id="cat">
+            <div class="categories-header">
+                <h2>Shop by<br>categories</h2>
+                <p>CURATED COLLECTIONS</p>
+            </div>
             
-<div class="room-category">
-    <div class="room-icon">
-        <img src="media/living-room-icon.png" alt="Living Room" class="room-img">
-    </div>
-    <div class="room-info">
-        <h3>Living Room</h3>
-        <p>Stylish and comfortable designs</p>
-        <a href="#" class="room-link">Explore</a>
-    </div>
-</div>
+            <div class="category-grid">
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="media/dining-chair.png" alt="Dining Chair" class="furniture-img">
+                    </div>
+                    <p>Simple</p>
+                    <a href="#" class="category-link">View Collection</a>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="media/sofa.png" alt="Sofa" class="furniture-img">
+                    </div>
+                    <p>Modern</p>
+                    <a href="#" class="category-link">View Collection</a>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-image">
+                        <img src="media/table.png" alt="Table" class="furniture-img">
+                    </div>
+                    <p>Classy</p>
+                    <a href="#" class="category-link">View Collection</a>
+                </div>
+            </div>
+            
+            <div class="room-categories">
+                
+                <div class="room-category">
+                    <div class="room-icon">
+                        <img src="media/living-room-icon.png" alt="Living Room" class="room-img">
+                    </div>
+                    <div class="room-info">
+                        <h3>Living Room</h3>
+                        <p>Stylish and comfortable designs</p>
+                        <a href="#" class="room-link">Explore</a>
+                    </div>
+                </div>
 
-<div class="room-category">
-    <div class="room-icon">
-        <img src="media/dining-room-icon.png" alt="Dining Room" class="room-img">
-    </div>
-    <div class="room-info">
-        <h3>Dining Room</h3>
-        <p>Elegant dining solutions</p>
-        <a href="#" class="room-link">Explore</a>
-    </div>
-</div>
-        </div>
-    </section>
-    
-    <section class="hot-products">
-        <div class="section-header">
-            <h2>Hot Products</h2>
-            <a href="#" class="view-more">VIEW MORE</a>
-        </div>
+                <div class="room-category">
+                    <div class="room-icon">
+                        <img src="media/dining-room-icon.png" alt="Dining Room" class="room-img">
+                    </div>
+                    <div class="room-info">
+                        <h3>Dining Room</h3>
+                        <p>Elegant dining solutions</p>
+                        <a href="#" class="room-link">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </section>
         
-        <div class="products-grid">
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="product-img-container">
-                        <img src="media/armchair.png" alt="Modern Armchair" class="furniture-img">
-                    </div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Modern Armchair</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star half">★</span>
-                        <span class="rating-count">(24)</span>
-                    </div>
-                    <p class="price">$299</p>
-                </div>
+        <section class="hot-products">
+            <div class="section-header">
+                <h2>Hot Products</h2>
+                <a href="#" class="view-more">VIEW MORE</a>
             </div>
             
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
+            <div class="products-grid">
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/armchair.png" alt="Modern Armchair" class="furniture-img">
+                        </div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
                     </div>
-                    <div class="product-img-container">
-                        <img src="media/accent-chair.png" alt="Curved Accent Chair" class="furniture-img">
+                    <div class="product-info">
+                        <h4 class="product-title">Modern Armchair</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star half">★</span>
+                            <span class="rating-count">(24)</span>
+                        </div>
+                        <p class="price">$299</p>
                     </div>
-                    <span class="discount">20% OFF</span>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
                 </div>
-                <div class="product-info">
-                    <h4 class="product-title">Curved Accent Chair</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="rating-count">(42)</span>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/accent-chair.png" alt="Curved Accent Chair" class="furniture-img">
+                        </div>
+                        <span class="discount">20% OFF</span>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
                     </div>
-                    <p class="price"><span class="original-price">$399</span> $319</p>
+                    <div class="product-info">
+                        <h4 class="product-title">Curved Accent Chair</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="rating-count">(42)</span>
+                        </div>
+                        <p class="price"><span class="original-price">$399</span> $319</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/lounge-chair.png" alt="Lounge Chair" class="furniture-img">
+                        </div>
+                        <div class="new-tag">NEW</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
                     </div>
-                    <div class="product-img-container">
-                        <img src="media/lounge-chair.png" alt="Lounge Chair" class="furniture-img">
+                    <div class="product-info">
+                        <h4 class="product-title">Lounge Chair</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                            <span class="rating-count">(18)</span>
+                        </div>
+                        <p class="price">$249</p>
                     </div>
-                    <div class="new-tag">NEW</div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
                 </div>
-                <div class="product-info">
-                    <h4 class="product-title">Lounge Chair</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star empty">★</span>
-                        <span class="rating-count">(18)</span>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/dining-chair-2.png" alt="Dining Chair" class="furniture-img">
+                        </div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
                     </div>
-                    <p class="price">$249</p>
+                    <div class="product-info">
+                        <h4 class="product-title">Dining Chair</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star half">★</span>
+                            <span class="rating-count">(36)</span>
+                        </div>
+                        <p class="price">$179</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="product-img-container">
-                        <img src="media/dining-chair-2.png" alt="Dining Chair" class="furniture-img">
-                    </div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Dining Chair</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star half">★</span>
-                        <span class="rating-count">(36)</span>
-                    </div>
-                    <p class="price">$179</p>
-                </div>
-            </div>
 
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/modern-sofa.png" alt="Modern Sofa" class="furniture-img">
+                        </div>
+                        <div class="new-tag">NEW</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
                     </div>
-                    <div class="product-img-container">
-    <img src="media/modern-sofa.png" alt="Modern Sofa" class="furniture-img">
-</div>
-                    <div class="new-tag">NEW</div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Modern Sofa</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="rating-count">(52)</span>
+                    <div class="product-info">
+                        <h4 class="product-title">Modern Sofa</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="rating-count">(52)</span>
+                        </div>
+                        <p class="price">$899</p>
                     </div>
-                    <p class="price">$899</p>
                 </div>
-            </div>
-            
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/coffee-table.png" alt="Coffee Table" class="furniture-img">
+                        </div>
+                        <span class="discount">15% OFF</span>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
                     </div>
-                    <div class="product-img-container">
-    <img src="media/coffee-table.png" alt="Coffee Table" class="furniture-img">
-</div>
-                    <span class="discount">15% OFF</span>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Coffee Table</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star half">★</span>
-                        <span class="rating-count">(29)</span>
+                    <div class="product-info">
+                        <h4 class="product-title">Coffee Table</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star half">★</span>
+                            <span class="rating-count">(29)</span>
+                        </div>
+                        <p class="price"><span class="original-price">$349</span> $297</p>
                     </div>
-                    <p class="price"><span class="original-price">$349</span> $297</p>
                 </div>
-            </div>
-            
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/accent-armchair.png" alt="Accent Armchair" class="furniture-img">
+                        </div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
                     </div>
-                    <div class="product-img-container">
-    <img src="media/accent-armchair.png" alt="Accent Armchair" class="furniture-img">
-</div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Accent Armchair</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star empty">★</span>
-                        <span class="rating-count">(15)</span>
+                    <div class="product-info">
+                        <h4 class="product-title">Accent Armchair</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                            <span class="rating-count">(15)</span>
+                        </div>
+                        <p class="price">$329</p>
                     </div>
-                    <p class="price">$329</p>
                 </div>
-            </div>
-            
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/modern-dining-chair.png" alt="Modern Dining Chair" class="furniture-img">
+                        </div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
                     </div>
-                    <div class="product-img-container">
-    <img src="media/modern-dining-chair.png" alt="Modern Dining Chair" class="furniture-img">
-</div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Modern Dining Chair</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star half">★</span>
-                        <span class="star empty">★</span>
-                        <span class="rating-count">(22)</span>
+                    <div class="product-info">
+                        <h4 class="product-title">Modern Dining Chair</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star half">★</span>
+                            <span class="star empty">★</span>
+                            <span class="rating-count">(22)</span>
+                        </div>
+                        <p class="price">$199</p>
                     </div>
-                    <p class="price">$199</p>
                 </div>
-            </div>
 
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/recliner-chair.png" alt="Recliner Chair" class="furniture-img">
+                        </div>
+                        <span class="discount">10% OFF</span>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-title">Recliner Chair</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="rating-count">(47)</span>
+                        </div>
+                        <p class="price"><span class="original-price">$499</span> $449</p>
+                    </div>
+                </div>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/side-chair.png" alt="Side Chair" class="furniture-img">
+                        </div>
+                        <div class="new-tag">NEW</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-title">Side Chair</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star half">★</span>
+                            <span class="rating-count">(31)</span>
+                        </div>
+                        <p class="price">$279</p>
+                    </div>
+                </div>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/bar-stool.png" alt="Bar Stool" class="furniture-img">
+                        </div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-title">Bar Stool</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                            <span class="rating-count">(19)</span>
+                        </div>
+                        <p class="price">$159</p>
+                    </div>
+                </div>
+                
+                <div class="product">
+                    <div class="product-image">
+                        <div class="product-actions">
+                            <a href="#" class="action-btn wishlist-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </a>
+                            <a href="#" class="action-btn quick-view-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="product-img-container">
+                            <img src="media/side-table.png" alt="Side Table" class="furniture-img">
+                        </div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-title">Side Table</h4>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star half">★</span>
+                            <span class="star empty">★</span>
+                            <span class="rating-count">(27)</span>
+                        </div>
+                        <p class="price">$129</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="newsletter">
+            <div class="newsletter-content">
+                <h2>Join Our Newsletter</h2>
+                <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn primary-btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>FURNISH</h3>
+                    <p>Bringing style and comfort to your home since 2010.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                             </svg>
                         </a>
-                        <a href="#" class="action-btn quick-view-btn">
+                        <a href="#" class="social-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
                     </div>
-                    <div class="product-img-container">
-    <img src="media/recliner-chair.png" alt="Recliner Chair" class="furniture-img">
-</div>
-                    <span class="discount">10% OFF</span>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
                 </div>
-                <div class="product-info">
-                    <h4 class="product-title">Recliner Chair</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="rating-count">(47)</span>
-                    </div>
-                    <p class="price"><span class="original-price">$499</span> $449</p>
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
                 </div>
-            </div>
-            
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="product-img-container">
-    <img src="media/side-chair.png" alt="Side Chair" class="furniture-img">
-</div>
-                    <div class="new-tag">NEW</div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                <div class="footer-column">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
                 </div>
-                <div class="product-info">
-                    <h4 class="product-title">Side Chair</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star half">★</span>
-                        <span class="rating-count">(31)</span>
-                    </div>
-                    <p class="price">$279</p>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <address>
+                        <p>727 Furniture Street</p>
+                        <p>Design District, Sfax</p>
+                        <p>Email: info@furnish.com</p>
+                        <p>Phone: (216) 29 759 042</p>
+                    </address>
                 </div>
             </div>
-            
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="product-img-container">
-    <img src="media/bar-stool.png" alt="Bar Stool" class="furniture-img">
-</div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Bar Stool</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star empty">★</span>
-                        <span class="rating-count">(19)</span>
-                    </div>
-                    <p class="price">$159</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FURNISH. All rights reserved.</p>
+                <div class="payment-methods">
+                    <img src="media/visa.png" alt="Visa">
+                    <img src="media/mastercard.png" alt="Mastercard">
+                    <img src="media/paypal.png" alt="PayPal">
+                    <img src="media/applepay.png" alt="Apple Pay">
                 </div>
             </div>
-            
-            <div class="product">
-                <div class="product-image">
-                    <div class="product-actions">
-                        <a href="#" class="action-btn wishlist-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="action-btn quick-view-btn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                <line x1="11" y1="8" x2="11" y2="14"></line>
-                                <line x1="8" y1="11" x2="14" y2="11"></line>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="product-img-container">
-    <img src="media/side-table.png" alt="Side Table" class="furniture-img">
-</div>
-                    <a href="#" class="add-to-cart-btn">Add to Cart</a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-title">Side Table</h4>
-                    <div class="product-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star half">★</span>
-                        <span class="star empty">★</span>
-                        <span class="rating-count">(27)</span>
-                    </div>
-                    <p class="price">$129</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="newsletter">
-        <div class="newsletter-content">
-            <h2>Join Our Newsletter</h2>
-            <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Your email address" required>
-                <button type="submit" class="btn primary-btn">Subscribe</button>
-            </form>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="footer-top">
-            <div class="footer-column">
-                <h3>FURNISH</h3>
-                <p>Bringing style and comfort to your home since 2010.</p>
-                <div class="social-icons">
-                    <a href="#" class="social-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h4>Shop</h4>
-                <ul>
-                    <li><a href="#">All Products</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                    <li><a href="#">Best Sellers</a></li>
-                    <li><a href="#">Sale</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Information</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping & Returns</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Contact</h4>
-                <address>
-                    <p>727 Furniture Street</p>
-                    <p>Design District, Sfax</p>
-                    <p>Email: info@furnish.com</p>
-                    <p>Phone: (216) 29 759 042</p>
-                </address>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 FURNISH. All rights reserved.</p>
-            <div class="payment-methods">
-                <img src="media/visa.png" alt="Visa">
-                <img src="media/mastercard.png" alt="Mastercard">
-                <img src="media/paypal.png" alt="PayPal">
-                <img src="media/applepay.png" alt="Apple Pay">
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const splash = document.getElementById('splash');
+            const mainContent = document.getElementById('mainContent');
+            
+            function hideSplash() {
+                splash.classList.add('zoom-out');
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    mainContent.classList.add('show');
+                }, 1200);
+            }
+
+            splash.addEventListener('click', function() {
+                hideSplash();
+            });
+            
+            splash.addEventListener('touchstart', function() {
+                hideSplash();
+            });
+
             const slides = document.querySelectorAll('.hero-slide');
             const dots = document.querySelectorAll('.dot');
             const prevBtn = document.querySelector('.prev');

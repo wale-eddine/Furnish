@@ -1,0 +1,51 @@
+/* Splash screen styles */
+.splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 1.2s ease-out;
+  cursor: pointer;
+}
+
+.splash-text {
+  font-family: "Playfair Display", serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: #3a6ea5;
+  letter-spacing: 10px;
+  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1s ease-out;
+}
+
+.splash.zoom-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash.zoom-out .splash-text {
+  transform: scale(3);
+  opacity: 0;
+}
+
+/* Hide main content initially */
+.main-content {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+.main-content.show {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .splash-text {
+    font-size: 3rem;
+    letter-spacing: 5px;
+  }
+}

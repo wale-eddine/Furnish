@@ -39,7 +39,8 @@ Furnish/
 ├── css/                   # Stylesheets directory
 │   └── style.css     
 ├── html/                  # Additional HTML pages      
-│   └── zoom_entry.html    
+│   ├── signin.html
+    └── signup.html    
 ├── media/                 # Media assets directory
 ├── screenshots/           # README screenshots
 ├── index.html             # Main homepage
